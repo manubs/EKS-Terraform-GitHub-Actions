@@ -28,7 +28,7 @@ endpoint-public-access  = true
 
 # ✅ Fix 2: Use widely available instance types
 ondemand_instance_types = ["t3.medium"]
-spot_instance_types     = ["t3.medium", "t3.large", "m5.large", "m5.xlarge", "c5.large", "c5.xlarge"]
+spot_instance_types     = ["t3.medium", "t3.large"]
 
 desired_capacity_on_demand = "1"
 min_capacity_on_demand     = "1"
