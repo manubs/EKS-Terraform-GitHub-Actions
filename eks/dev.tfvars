@@ -18,9 +18,9 @@ ngw-name              = "ngw"
 eks-sg                = "eks-sg"
 
 # EKS
-is-eks-cluster-enabled  = true
-cluster-version         = "1.33"
-cluster-name            = "dev-ap-medium-eks-cluster"
+is-eks-cluster-enabled = true
+cluster-version        = "1.33"
+cluster-name           = "dev-ap-medium-eks-cluster"
 
 # ✅ Fix 1: Enable public access so nodes & kubectl can reach API
 endpoint-private-access = true
