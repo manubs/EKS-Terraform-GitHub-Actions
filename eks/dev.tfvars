@@ -18,22 +18,29 @@ ngw-name              = "ngw"
 eks-sg                = "eks-sg"
 
 # EKS
-is-eks-cluster-enabled     = true
-cluster-version            = "1.33"
-cluster-name               = "eks-cluster"
-endpoint-private-access    = true
-endpoint-public-access     = false
-ondemand_instance_types    = ["t3a.medium"]
-spot_instance_types        = ["c5a.large", "c5a.xlarge", "m5a.large", "m5a.xlarge", "c5.large", "m5.large", "t3a.large", "t3a.xlarge", "t3a.medium"]
+is-eks-cluster-enabled  = true
+cluster-version         = "1.33"
+cluster-name            = "dev-ap-medium-eks-cluster"
+
+# ✅ Fix 1: Enable public access so nodes & kubectl can reach API
+endpoint-private-access = true
+endpoint-public-access  = true
+
+# ✅ Fix 2: Use widely available instance types
+ondemand_instance_types = ["t3.medium"]
+spot_instance_types     = ["t3.medium", "t3.large", "m5.large", "m5.xlarge", "c5.large", "c5.xlarge"]
+
 desired_capacity_on_demand = "1"
 min_capacity_on_demand     = "1"
 max_capacity_on_demand     = "5"
 desired_capacity_spot      = "1"
 min_capacity_spot          = "1"
 max_capacity_spot          = "10"
+
+# ✅ Fix 3: Verified addon versions for EKS 1.33
 addons = [
   {
-    name    = "vpc-cni",
+    name    = "vpc-cni"
     version = "v1.20.0-eksbuild.1"
   },
   {
@@ -48,5 +55,4 @@ addons = [
     name    = "aws-ebs-csi-driver"
     version = "v1.46.0-eksbuild.1"
   }
-  # Add more addons as needed
 ]
